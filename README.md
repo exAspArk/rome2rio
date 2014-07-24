@@ -1,23 +1,22 @@
-Rome2rio
-========
+# Rome2rio
 
 A Ruby wrapper for the Rome2rio API. See http://www.rome2rio.com/documentation/search for the official documentation.
 
-Installation
-------------
+## Installation
 
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'rome2rio', github: 'exAspArk/rome2rio'
 ```
-gem install rome2rio
-```
 
-
-Usage
------
+## Usage
 
 ```ruby
 require 'rome2rio'
-results = Rome2rio::Connection.new.search(search options)
-puts results.routes[0].duration
+rome2rio_search = Rome2rio::Connection.new(api_key: 'your api key').search(search_options)
+puts rome2rio_search.path
+puts rome2rio_search.results.routes[0].duration
 ```
 
 All field names (both request and response) use the original naming as in the API documentation.
@@ -32,11 +31,8 @@ Using Position for input:
 Rome2rio::Connection.new.search({:oPos => Rome2rio::Position.new(41.79443,12.25108), :dPos => Rome2rio::Position.new(-22.81215,-43.24721)})
 ```
 
-The original JSON response is also available in the ```verbatim``` field.
+The original JSON response is also available in the `verbatim` field.
 
-Copyright
----------
+## Copyright
 
-Made for Soundtravel (http://soundtravel.co/).
-
-Copyright (c) 2013 Alex Beregszaszi. See LICENSE for details.
+See LICENSE for details.

@@ -1,6 +1,7 @@
 require 'faraday'
 require 'multi_json'
 
+require 'rome2rio/search'
 require 'rome2rio/connection'
 
 require 'rome2rio/helper/encoded_number_pair'
