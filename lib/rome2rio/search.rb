@@ -1,11 +1,10 @@
 module Rome2rio
   class Search
-    API_PATH = "/api/1.2/json/Search"
+    attr_reader :endpoint, :api_path, :options
 
-    attr_reader :endpoint, :options
-
-    def initialize(endpoint, options)
+    def initialize(endpoint, api_path, options)
       @endpoint = endpoint
+      @api_path = api_path
       @options = options.clone
 
       if options[:flags].is_a?(Symbol) || options[:flags].is_a?(Array)
@@ -14,7 +13,7 @@ module Rome2rio
     end
 
     def path
-      "#{ API_PATH }?#{ URI.encode_www_form(options) }"
+      "#{ api_path }?#{ URI.encode_www_form(options) }"
     end
 
     def results
